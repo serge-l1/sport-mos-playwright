@@ -3,7 +3,7 @@ from dotenv import dotenv_values
 import pytest
 from playwright.sync_api import Playwright, APIRequestContext
 
-config = dotenv_values()
+config = dotenv_values(".env")
 
 
 @pytest.fixture(scope="session")

@@ -1,7 +1,7 @@
 from playwright.sync_api import  APIRequestContext
 
 def test_should_sports_zone_preview_displays(api_request_context: APIRequestContext) -> None:
-    facilities_response = api_request_context.get("/api/facilities?count=500&page=1")
+    facilities_response = api_request_context.get("/api/facilities?count=4770&page=1")
     assert facilities_response.ok
 
     sport_facilities = list(facilities_response.json()["items"])
@@ -15,7 +15,7 @@ def test_should_sports_zone_preview_displays(api_request_context: APIRequestCont
             try:
                 thumbnail_url = sport_zone['mainPhoto']['thumbnailUrl']
             except Exception:
-                assert False, f"Failed to open preview for sports zones {sport_zone['id']}"
+                assert False, f"Failed to open preview for sports zones {sport_facility['id']}"
             thumbnail_url_response = api_request_context.get(thumbnail_url)
             assert thumbnail_url_response.ok
             
